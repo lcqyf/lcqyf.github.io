@@ -127,8 +127,8 @@
     let panel_body = document.querySelector(".panel-body");
     let qwer_answer = document.querySelector(".qwer_answer");
     let qwer_tips = document.querySelector(".qwer_tips");
-    let question = ["1+1=？", "2+2=？", "3+3=？"];
-    let answer = ["2", "4", "6"];
+    let question = ["1+1=？", "2+2=？", "3+3=？", "4+4=?"];
+    let answer = ["2", "4", "6", "8"];
     if (!panel_body.innerHTML) {
       panel_body.innerHTML = question[0];
     }
@@ -154,7 +154,7 @@
                   qwer_answer.value = null;
                   canClick = true;
                 } else {
-                  window.location = './picture.html'
+                  window.location = "./picture.html";
                 }
               } else {
                 qwer_tips.innerHTML = "回答错误！";
