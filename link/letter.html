@@ -134,7 +134,7 @@
     let strUrl = new RegExp("/letter.html");
     if (strUrl.test(window.location)) {
       let username = sessionStorage.getItem("username");
-      if (username !== "123") {
+      if (username !== "123456") {
         window.location = "../index.html";
       } else {
         container_fluid.classList.add("demonstrate");
