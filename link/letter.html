@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no"
+    />
+    <title>Document</title>
+    <style>
+      .container-fluid {
+        height: 100vh;
+        background-color: rgb(245, 220, 228);
+        padding: 0;
+        display: none;
+      }
+      .swiper-container {
+        margin-top: 2vh;
+        width: 100%;
+        height: 96vh;
+      }
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .qwer_letter {
+        width: 100%;
+        text-align: center;
+      }
+      .last_slide {
+        position: relative;
+      }
+      .operation {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        bottom: 6vh;
+      }
+      .qwer_back {
+        margin: 0 20px !important;
+      }
+      .qwer_again {
+        margin: 0 20px !important;
+      }
+      .demonstrate {
+        display: block;
+      }
+    </style>
+    <!-- Bootstrap CSS 文件 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <!-- MDUI CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/mdui@1.0.0/dist/css/mdui.min.css"
+      integrity="sha384-2PJ2u4NYg6jCNNpv3i1hK9AoAqODy6CdiC+gYiL2DVx+ku5wzJMFNdE3RoWfBIRP"
+      crossorigin="anonymous"
+    />
+    <!-- Swiper -->
+    <link rel="stylesheet" href="../swiper/swiper-bundle.min.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div
+            class="swiper-slide"
+            style="background-color: rgb(245, 220, 228);"
+          >
+            <p class="qwer_letter">
+              1111111111111111111111111
+            </p>
+          </div>
+          <div
+            class="swiper-slide"
+            style="background-color: rgb(245, 220, 228);"
+          >
+            <p class="qwer_letter">
+              22222222222222222
+            </p>
+          </div>
+          <div
+            class="swiper-slide"
+            style="background-color: rgb(245, 220, 228);"
+          >
+            <p class="qwer_letter">
+              333333333333333333
+            </p>
+          </div>
+          <div
+            class="swiper-slide last_slide"
+            style="background-color: rgb(245, 220, 228);"
+          >
+            <p class="qwer_letter">
+              444444444444444444
+            </p>
+            <div class="operation">
+              <button class="mdui-btn mdui-btn-raised mdui-ripple qwer_back">
+                BACK
+              </button>
+              <button class="mdui-btn mdui-btn-raised mdui-ripple qwer_again">
+                AGAIN
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- jQuery -->
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"
+  ></script>
+  <!-- MDUI JavaScript -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/mdui@1.0.0/dist/js/mdui.min.js"
+    integrity="sha384-aB8rnkAu/GBsQ1q6dwTySnlrrbhqDwrDnpVHR2Wgm8pWLbwUnzDcIROX3VvCbaK+"
+    crossorigin="anonymous"
+  ></script>
+  <!-- Swiper -->
+  <script src="../swiper/swiper-bundle.min.js"></script>
+  <script>
+    let container_fluid = document.querySelector(".container-fluid");
+    let strUrl = new RegExp("/letter.html");
+    if (strUrl.test(window.location)) {
+      let username = sessionStorage.getItem("username");
+      if (username !== "123") {
+        window.location = "../index.html";
+      } else {
+        container_fluid.classList.add("demonstrate");
+      }
+    }
+    let qwer_back = document.querySelector(".qwer_back");
+    let qwer_again = document.querySelector(".qwer_again");
+    let mySwiper = new Swiper(".swiper-container", {
+      spaceBetween: 10,
+      effect: "fade",
+    });
+    qwer_again.onclick = function (e) {
+      mySwiper.slideTo(0, 1000, false); //切换到第一个slide，速度为1秒
+    };
+    qwer_back.onclick = function (e) {
+      window.location = "./picture.html";
+    };
+  </script>
+</html>

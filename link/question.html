@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no"
+    />
+    <title>Document</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <!-- MDUI CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/mdui@1.0.0/dist/css/mdui.min.css"
+      integrity="sha384-2PJ2u4NYg6jCNNpv3i1hK9AoAqODy6CdiC+gYiL2DVx+ku5wzJMFNdE3RoWfBIRP"
+      crossorigin="anonymous"
+    />
+    <style>
+      .container-fluid {
+        height: 100vh;
+        background-color: rgb(245, 220, 228);
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: none;
+      }
+      .dialoge_1 {
+        box-sizing: border-box;
+        width: 380px;
+        margin-left: 0;
+        border-radius: 5px !important;
+        overflow: hidden;
+      }
+      .panel-body {
+        box-sizing: border-box;
+        text-align: center;
+        background-color: rgb(209, 208, 255);
+      }
+      .panel-footer {
+        box-sizing: border-box;
+        width: 100%;
+      }
+      .disappear {
+        display: none;
+      }
+      .qwer_answer_group {
+        margin-left: 50% !important;
+        transform: translateX(-50%) !important;
+        margin-top: 40px !important;
+        width: 90% !important;
+      }
+      .input {
+        border-radius: 5px !important;
+      }
+      .qwer_tips {
+        color: rgb(255, 0, 51);
+      }
+      .qwer_button {
+        margin-left: 50% !important;
+        transform: translateX(-50%) !important;
+        font-size: 16px !important;
+        margin-top: 50px !important;
+        margin-bottom: 40px !important;
+      }
+      .demonstrate {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="panel panel-default dialoge_1">
+        <div class="panel-body"></div>
+        <div class="panel-footer">
+          <div class="input-group qwer_answer_group">
+            <input
+              type="text"
+              class="form-control input qwer_answer"
+              placeholder="请回答。"
+              aria-describedby="sizing-addon1"
+            />
+          </div>
+          <div
+            class="qwer_tips"
+            style="height: 30px; text-align: center; margin-top: 10px;"
+          ></div>
+          <button class="mdui-btn mdui-btn-raised mdui-ripple qwer_button">
+            NEXT
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- jQuery -->
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"
+  ></script>
+  <!-- MDUI JavaScript -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/mdui@1.0.0/dist/js/mdui.min.js"
+    integrity="sha384-aB8rnkAu/GBsQ1q6dwTySnlrrbhqDwrDnpVHR2Wgm8pWLbwUnzDcIROX3VvCbaK+"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    let container_fluid = document.querySelector(".container-fluid");
+    let strUrl = new RegExp("/question.html");
+    if (strUrl.test(window.location)) {
+      let username = sessionStorage.getItem("username");
+      if (username !== "123") {
+        window.location = "../index.html";
+      } else {
+        container_fluid.classList.add("demonstrate");
+      }
+    }
+    let qwer_button = document.querySelector(".qwer_button");
+    let panel_body = document.querySelector(".panel-body");
+    let qwer_answer = document.querySelector(".qwer_answer");
+    let qwer_tips = document.querySelector(".qwer_tips");
+    let question = ["1+1=？", "2+2=？", "3+3=？"];
+    let answer = ["2", "4", "6"];
+    if (!panel_body.innerHTML) {
+      panel_body.innerHTML = question[0];
+    }
+    let i = 0;
+    let canClick = true;
+    qwer_button.onclick = function (e) {
+      if (canClick) {
+        canClick = false;
+        let qwerTipsHide = function () {
+          setTimeout(() => {
+            qwer_tips.innerHTML = "";
+            canClick = true;
+            clearTimeout(qwerTipsHide);
+          }, 1500);
+        };
+        if (qwer_answer.value) {
+          for (i = 0; i < question.length; i++) {
+            let item = question[i];
+            if (panel_body.innerHTML === item) {
+              if (qwer_answer.value === answer[i]) {
+                if (i !== question.length - 1) {
+                  panel_body.innerHTML = question[i + 1];
+                  qwer_answer.value = null;
+                  canClick = true;
+                } else {
+                  window.location = './picture.html'
+                }
+              } else {
+                qwer_tips.innerHTML = "回答错误！";
+                qwerTipsHide();
+              }
+              return;
+            }
+          }
+        } else {
+          qwer_tips.innerHTML = "请回答问题！";
+          qwerTipsHide();
+        }
+      }
+    };
+  </script>
+</html>
