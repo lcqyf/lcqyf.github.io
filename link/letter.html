@@ -23,6 +23,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 20px;
       }
       .qwer_letter {
         width: 100%;
@@ -74,7 +75,7 @@
             style="background-color: rgb(245, 220, 228);"
           >
             <p class="qwer_letter">
-              1111111111111111111111111
+              话太多了，然后不知道该说什么好
             </p>
           </div>
           <div
@@ -82,7 +83,7 @@
             style="background-color: rgb(245, 220, 228);"
           >
             <p class="qwer_letter">
-              22222222222222222
+              七夕快乐呀，虽然已经过去一天了，这份礼物才送达。
             </p>
           </div>
           <div
@@ -90,7 +91,7 @@
             style="background-color: rgb(245, 220, 228);"
           >
             <p class="qwer_letter">
-              333333333333333333
+              但是没关系，也代表了我的一丁点小心意，有想法总是好的。
             </p>
           </div>
           <div
@@ -98,7 +99,7 @@
             style="background-color: rgb(245, 220, 228);"
           >
             <p class="qwer_letter">
-              444444444444444444
+             还行动了，是不是有一点小感动！
             </p>
             <div class="operation">
               <button class="mdui-btn mdui-btn-raised mdui-ripple qwer_back">
@@ -134,7 +135,7 @@
     let strUrl = new RegExp("/letter.html");
     if (strUrl.test(window.location)) {
       let username = sessionStorage.getItem("username");
-      if (username !== "123456") {
+      if (username !== "猪猪") {
         window.location = "../index.html";
       } else {
         container_fluid.classList.add("demonstrate");

@@ -117,7 +117,7 @@
     let strUrl = new RegExp("/question.html");
     if (strUrl.test(window.location)) {
       let username = sessionStorage.getItem("username");
-      if (username !== "123456") {
+      if (username !== "猪猪") {
         window.location = "../index.html";
       } else {
         container_fluid.classList.add("demonstrate");
@@ -127,8 +127,8 @@
     let panel_body = document.querySelector(".panel-body");
     let qwer_answer = document.querySelector(".qwer_answer");
     let qwer_tips = document.querySelector(".qwer_tips");
-    let question = ["1+1=？", "2+2=？", "3+3=？", "4+4=?"];
-    let answer = ["2", "4", "6", "8"];
+    let question = ["我们的共同点，你觉得有哪些？", "那次我推你，你是不是故意倒下的", "你觉得我做的最大胆的事"];
+    let answer = ["一起吃火锅，看电影", "是", "跑去找你那一次"];
     if (!panel_body.innerHTML) {
       panel_body.innerHTML = question[0];
     }

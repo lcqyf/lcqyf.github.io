@@ -18,6 +18,7 @@
         margin-top: 15px;
         width: 100%;
         height: 80vh;
+        font-size: 20px;
       }
       .swiper-slide {
         border-radius: 2px;
@@ -65,25 +66,25 @@
       <div>
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background: url(../img/timg.jpg) no-repeat center; background-size: cover;">
-            </div>
+            <!-- <div class="swiper-slide" style="background: url(../img/F0346FB15D2CE9326E4038BAF3FD2BCA.jpg) no-repeat center; background-size: cover;">
+            </div> -->
             <div
               class="swiper-slide"
               style="background-color: rgb(42, 165, 159);"
             >
-              slider2
+            是不是以为有什么煽情的话？
             </div>
             <div
               class="swiper-slide"
               style="background-color: rgb(46, 165, 42);"
             >
-              slider3
+              翻了翻，结果没有。
             </div>
             <div
               class="swiper-slide"
               style="background-color: rgb(165, 42, 144);"
             >
-              slider3
+              有点气，哈哈哈
             </div>
           </div>
         </div>
@@ -99,19 +100,19 @@
                 class="swiper-slide thumbs-slide"
                 style="background-color: rgb(42, 165, 159);"
               >
-                slider2
+                1
               </div>
               <div
                 class="swiper-slide thumbs-slide"
                 style="background-color: rgb(46, 165, 42);"
               >
-                slider3
+                2
               </div>
               <div
                 class="swiper-slide thumbs-slide"
                 style="background-color: rgb(165, 42, 144);"
               >
-                slider3
+                3
               </div>
             </div>
           </div>
@@ -142,7 +143,7 @@
     let strUrl = new RegExp("/picture.html");
     if (strUrl.test(window.location)) {
       let username = sessionStorage.getItem("username");
-      if (username !== "123456") {
+      if (username !== "猪猪") {
         window.location = "../index.html";
       } else {
         container_fluid.classList.add("demonstrate");
